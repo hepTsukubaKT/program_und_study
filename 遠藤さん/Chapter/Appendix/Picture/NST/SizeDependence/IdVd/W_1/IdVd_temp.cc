@@ -1,0 +1,183 @@
+//
+// PROGRAM
+// TO MULTI-PLOT Ids vs Vgs OF SOI-FET 
+//               EACH TEMPERATURES
+//
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <string.h>
+
+#include "TCanvas.h"
+#include "TMultiGraph.h"
+#include "TGraph.h"
+#include "TStyle.h"
+#include "TF1.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "TGraphErrors.h"
+#include "TText.h"
+#include "TPad.h"
+#include "TGaxis.h"
+#include "TLegend.h"
+
+#include "math.h"
+
+#define N 3;
+#define NUM_DATA 300;
+
+void IdVd_temp(){
+
+  /*
+  int N;
+  std::cout << "NUMBER OF PLOTs : " << std::flush;
+  std::cin >> N;
+  */
+
+  //std::cout << "------------------------------- " << std::endl;
+
+  /*std::string CHIP;
+  std::cout << "CHIP : " << std::flush;
+  std::cin >> CHIP;
+
+  std::string FET;
+  std::cout << "FET  : " << std::flush;
+  std::cin >> FET;*/
+
+  std::string Vg;
+  std::cout << "Vg  : " << std::flush;
+  std::cin >> Vg;
+
+  std::string TEMP;
+  std::cout << "TEMPERATURE (E:END)----- " << std::endl;
+
+  std::string CHIP = "x";
+  std::string FET = "x";   //for SizeDependence
+  
+
+  float VD[N][NUM_DATA];
+  float ID[N][NUM_DATA];
+
+  TCanvas* c=new TCanvas("c","IV Plot", 800, 700);
+  c->Draw();
+  c->SetBorderMode(0);
+  //y軸をログにするかどうか？
+  //通常はログ表示だが、ログにしたい場合はコメントアウトすれば良い。
+  //c->SetLogy(1);
+  c->SetGridx();
+  c->SetGridy();
+
+  c->SetFillColor(0);
+  gStyle->SetTitleFillColor(0);
+  gStyle->SetTitleBorderSize(1);
+
+    
+  c->SetFrameBorderMode(0);
+
+  TLegend *leg = new TLegend(0.13, 0.70, 0.27, 0.88,"TEMPERATURE","NDC");
+  leg->SetTextSize(0.06);
+  leg->SetBorderSize(0);
+  leg->SetFillStyle(0);
+  leg->SetFillColor(0);
+
+  TMultiGraph *mg= new TMultiGraph();  
+  TGraph *g[N];
+
+  for(int ii=0; ii<N; ii++){
+
+    char T[4][40]={"3K_L=0.4","3K_L=1","3K_L=5","E"}; //for test
+
+
+    //  std::cin >> TEMP;
+    TEMP=T[ii];
+
+    if(TEMP=="E")
+      break;
+
+    std::string SOISTJ="PTEG2";
+    std::string IV="IdVd";
+    std::string _="_";
+    std::string EXT=".txt";
+    std::string CHIP_FET_IV_Vg_=CHIP+_+FET+_+IV+_+Vg+_;
+
+    std::string FileName = SOISTJ+_+CHIP_FET_IV_Vg_+TEMP+_+EXT;
+    cout << "FileName is " << FileName << endl;   //test
+    std::ifstream ifs(FileName.c_str());
+
+    std::string str;
+
+    int iii=0;
+    while(getline(ifs,str))
+      {
+
+      sscanf(str.c_str(),"%f,%*f,%*f ,%*f ,%f,%*f,%*f,%*f,%*[^,],%*[a-zA-Z0-9: ]",
+	     &VD[ii][iii],&ID[ii][iii]); 
+
+      ID[ii][iii]=1000000 * fabs(ID[ii][iii]);//change unit of Id [A] to Id[uA]
+      //ID[0][iii]=ID[0][iii] * 0.4;   //multiply L[um]
+      //ID[1][iii]=ID[0][iii] * 1;   //multiply L[um]
+      //ID[2][iii]=ID[0][iii] * 5;   //multiply L[um]
+      ID[ii][iii]=ID[ii][iii] / 0.4;   //dividing by W[um]
+      ID[ii][iii]=ID[ii][iii] / 1;   //dividing by W[um]
+      ID[ii][iii]=ID[ii][iii] / 5;   //dividing by W[um]
+      
+      iii++;
+
+      }
+
+    g[ii] = new TGraph(iii,VD[ii],ID[ii]);
+    g[ii]->SetMarkerStyle(20);
+    g[ii]->SetMarkerColor(ii+2);
+    g[ii]->SetName(TEMP.c_str());
+
+    leg->AddEntry(g[ii],TEMP.c_str(),"P");
+    
+    mg->Add(g[ii]);
+  }
+
+  mg->Draw("AP");
+
+  gROOT->GetColor(3)->SetRGB(0., 0.7, 0.); // Green  (0, 1, 0)->(0, 0.7, 0)
+  gROOT->GetColor(5)->SetRGB(1., 0.5, 0.);
+  gROOT->GetColor(6)->SetRGB(0., 0.8, 1.);
+
+  std::string TITLE ="PTEG2 W dependence Vg="+Vg+"V"; //SOISTJ3の場合
+
+  /*title setting */
+  //mg->SetTitle(TITLE.c_str());
+  mg->SetTitle("");// no title
+
+  /*the title of axis*/
+  //mg->GetXaxis()->SetTitle("Vds [V]");
+  //mg->GetYaxis()->SetTitle("Ids [mA]");
+
+  /*set max digits of y-axis*/
+  gStyle->SetStripDecimals(false);
+  mg->GetYaxis()->SetNoExponent(false);
+((TGaxis*)mg->GetYaxis())->SetMaxDigit(2);
+
+  /*title location*/
+  mg->GetYaxis()->SetTitleOffset(1.2);
+
+  /*set size of axis's title*/
+  mg->GetXaxis()->SetLabelSize(0.06);
+  mg->GetYaxis()->SetLabelSize(0.06);
+
+  /*set minimum or maximum of axis*/
+  //mg->SetMinimum(1);
+  mg->SetMaximum(1.5 e0);
+
+  leg->Draw();
+
+  std::cout << "------------------------------ "<<std::endl;
+
+ 
+  //std::string EPS=".eps";
+  //std::string SName=SOISTJ+_+CHIP_FET_IV_Vg_+EPS;
+  //c->SaveAs(SName.c_str());
+  //std::string GIF=".gif";
+  //std::string SName=SOISTJ+_+CHIP_FET_IV_Vg_+GIF;
+  //c->SaveAs(SName.c_str());
+
+}

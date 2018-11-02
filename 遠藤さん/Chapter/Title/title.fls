@@ -1,0 +1,6 @@
+PWD C:/Users/êΩâ√/Desktop/TEX/âìì°Ç≥ÇÒ/Chapter/Title
+INPUT c:/w32tex/share/texmf-dist/web2c/texmf.cnf
+INPUT c:/w32tex/share/texmf-dist/web2c/eptex/platex.fmt
+INPUT ./title.tex
+OUTPUT title.log
+OUTPUT title.dvi

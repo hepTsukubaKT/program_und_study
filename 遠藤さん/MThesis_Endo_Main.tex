@@ -1,0 +1,58 @@
+\documentclass[11pt,a4j,twoside]{jreport}
+%\documentclass[11pt,a4j]{jreport}
+%\usepackage[dvips]{graphicx}
+\usepackage{amsmath,amssymb,bm}
+%========add 20171129===========%
+\usepackage[dvips,dvipdfm,dvipdfmx]{graphicx}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{plext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsf}
+%=============================%
+
+%=====ブラケット使用=====%
+\usepackage{braket}
+
+%=====図を並列に並べる=====%
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+%=====表のセル結合=====%
+\usepackage{multirow}
+
+
+
+\begin{document}
+	\include{./Chapter/Title/title}    %タイトル
+	\include{./Chapter/Abstract/abstract}    %概要
+%=====ページナンバリング=====%
+      \pagenumbering{roman}
+	\tableofcontents    %各章目次の出力
+	\clearpage
+	\listoffigures    %図目次の出力
+	\clearpage
+	\listoftables    %表目次の出力
+	\clearpage
+%=====ページナンバリング=====%
+      \pagenumbering{arabic}
+	%\include{./Chapter/Chapter1/chapter1} %序論
+	%\include{./Chapter/Chapter2/chapter2} %超電導トンネル接合素子光検出器(STJ)
+	%\include{./Chapter/Chapter3/chapter3}  %SOIピクセル検出器
+	%\include{./Chapter/Chapter4/chapter4}  %SOI増幅器を用いたSTJ信号増幅試験
+	%\include{./Chapter/Chapter5/chapter5}  %極低温環境用SOI-FETの回路シミュレーター構築
+	%\include{./Chapter/Chapter6/chapter6}  %結論
+
+	%\include{./Chapter/Appendix/appendix} %極低温環境用SPICE回路シミュレーター構築のためのSOI-FETの電流電圧特性測定結果
+
+	%=====謝辞=====%
+	%\include{./Chapter/Acknowledgement/ack}
+
+	%=====参考文献=====%
+	%\include{./Chapter/Bibliography/bibliography}
+
+
+\end{document}

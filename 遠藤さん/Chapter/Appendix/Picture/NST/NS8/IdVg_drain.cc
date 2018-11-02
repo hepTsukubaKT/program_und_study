@@ -1,0 +1,195 @@
+   //***IdVg_drain.cc*********
+// PROGRAM
+// TO MULTI-PLOT Ids vs Vgs OF SOI-FET 
+//               EACH DRAIN-VOLTAGE
+//
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <string.h>
+
+#include "TCanvas.h"
+#include "TMultiGraph.h"
+#include "TGraph.h"
+#include "TStyle.h"
+#include "TF1.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "TGraphErrors.h"
+#include "TText.h"
+#include "TPad.h"
+#include "TGaxis.h"
+#include "TLegend.h"
+#include "TAxis.h"
+#include "TString.h"
+#include "math.h"
+
+#define N 2; //the number of plots of Vd.
+#define NUM_DATA 300;
+
+void IdVg_drain(){
+
+  /*test
+  int N;
+  std::cout << "The number of plots of Vd = : " << std::flush;
+  std::cin >> N;
+  */
+
+  std::cout << "------------------------------- " << std::endl;
+
+  std::string CHIP;
+  std::cout << "CHIP     : " << std::flush;
+  std::cin >> CHIP;
+
+  std::string FET;
+  std::cout << "FET      : " << std::flush;
+  std::cin >> FET;
+
+  std::string TEMP;
+  std::cout << "TEMP     : " << std::flush;
+  std::cin >> TEMP;
+  
+  float VG[N][NUM_DATA];
+  float VGN[N][NUM_DATA];
+  float ID[N][NUM_DATA];
+  float IDN[N][NUM_DATA];//negative points
+
+  TCanvas* c=new TCanvas("c","Ids-Vgs Plot", 1000, 900);
+  c->Draw();
+  c->SetBorderMode(0);
+
+  c->SetLogy(1);
+  c->SetGridx();
+  c->SetGridy();
+
+  c->SetFillColor(0);
+  gStyle->SetTitleFillColor(0);
+  gStyle->SetTitleBorderSize(1);
+  
+  c->SetFrameBorderMode(0);
+
+  TLegend *leg = new TLegend(0.13, 0.68, 0.28, 0.88,"Vd [V]","NDC");
+  leg->SetTextSize(0.03);
+  leg->SetBorderSize(0);
+  leg->SetFillStyle(0);
+  leg->SetFillColor(0);
+
+
+  TMultiGraph *mg= new TMultiGraph();
+  TMultiGraph *mgn= new TMultiGraph();
+  TGraph *g[N];//for positive currents
+  TGraph *gn[N];//for negative currents
+
+  float Vd_STEP = 1.75;
+  float Vd=0.05;
+  for(int ii=0; ii<N; ii++){
+    // Vd += Vd_STEP
+    Vd = 0.05 + Vd_STEP*ii;
+    //Vd*=(-1);/*for PMOS*/
+    std::ostringstream os;
+    os<<Vd;
+    TString Vd_str = os.str();
+    std::string SOISTJ="PTEG2"; //for PTEG2
+    std::cout << SOISTJ << std::endl;
+    std::string IV="IdVg";
+    std::string _="_";
+    //std::string CHIP="12";
+    //std::string FET="NS1";
+    std::string SOI_CHIP_FET_IV_=SOISTJ+_+CHIP+_+FET+_+IV+_;
+    //std::string SOI_CHIP_FET_IV_="PTEG2_6_B4_IdVg_";
+    //std::string TEMP="room2";
+    std::cout<<SOI_CHIP_FET_IV_<<std::endl;
+    char FileName[100];
+    sprintf(FileName,"%s%.2f_%s_.txt",SOI_CHIP_FET_IV_.c_str(),Vd,TEMP.c_str());
+    std::cout << FileName << std::endl;
+    std::ifstream ifs(FileName);
+    std::string str;
+    int iii=0;
+    int npos=0;
+    int nneg=0;
+    while(getline(ifs,str)){
+      float tmp_id=0.;
+      float tmp_vg=0.;
+      sscanf(str.c_str(),"%*f , %*f, %f ,%*f , %f , %*f, %*f, %*f, %*[ ^,], %*[a-zA-Z0-9: ]",
+	     &tmp_vg,&tmp_id);
+      if(tmp_id < 0.){
+	VGN[ii][nneg] = tmp_vg;   //for Pch
+	IDN[ii][nneg]= -1.*tmp_id;
+	//std::cout<<VGN[ii][nneg]<<" "<<IDN[ii][nneg]<<" negative current !"<<std::endl;
+	nneg++;
+      }
+      else{
+	VG[ii][npos] = tmp_vg;    //for Pch
+	ID[ii][npos] = tmp_id;
+	//std::cout<<VG[ii][npos]<<" "<<ID[ii][npos]<<std::endl;
+	npos++;
+      }
+      iii++;
+    }// for iii
+    g[ii] = new TGraph(npos,VG[ii],ID[ii]);
+    g[ii]->SetMarkerStyle(8);
+    g[ii]->SetMarkerColor(ii+2);
+    g[ii]->SetName(Vd_str.Data());
+    gn[ii] = new TGraph(nneg,VGN[ii],IDN[ii]);
+    gn[ii]->SetMarkerStyle(7);
+    gn[ii]->SetMarkerColor(ii+2);
+    TString  Vd_str2 = Vd_str;
+    Vd_str2 += "_neg";
+    gn[ii]->SetName(Vd_str2.Data());
+    
+//    if(ii==0){
+//      g[ii]->Draw("AP");
+//      gn[ii]->Draw("same P");
+//      c->SaveAs("test.gif");
+//    }
+    leg->AddEntry(g[ii],Vd_str.Data(),"P");
+    leg->AddEntry(gn[ii],Vd_str2.Data(),"P");
+    mg->Add(g[ii]);
+    mg->Add(gn[ii]);
+
+  } //for ii
+  //cout<<(sizeof g)/(sizeof *g)<<endl;
+  mg->Draw("AP");
+  //mgn->Draw("same P");
+  gROOT->GetColor(3)->SetRGB(0., 0.7, 0.); // Green  (0, 1, 0)->(0, 0.7, 0)
+  gROOT->GetColor(5)->SetRGB(1., 0.5, 0.);
+  gROOT->GetColor(7)->SetRGB(0., 0.7, 1.);
+
+  std::string TITLE = "PTEG2 "+CHIP+FET+" TEMP:"+TEMP; //for PTEG2
+  mg->SetTitle(TITLE.c_str());
+  //mg->SetTitle(TITLE); //no title
+  mg->GetXaxis()->SetTitle("Vgs [V]");
+  mg->GetYaxis()->SetTitle("Ids [A]"); 
+  mg->GetYaxis()->SetTitleOffset(1.2);
+
+  ((TGaxis*)mg->GetYaxis())->SetMaxDigits(2);
+  mg->GetXaxis()->SetNoExponent(kTRUE);
+
+  mg->GetXaxis()->SetLabelSize(0.04); //軸メモリを大きく表示(デフォルトは0.02)
+  mg->GetYaxis()->SetLabelSize(0.04); //軸メモリを大きく表示(デフォルトは0.02)
+
+  //mg->GetXaxis()->SetTitleSize(0.25); //for test
+  //mg->GetYaxis()->SetTitleSize(0.25); //for test
+
+  //x軸の設定                                                                   
+  //mg->GetXaxis()->SetLimits(0, 1);
+  //mg->GetXaxis()->SetLimits(-1.0, 0); /*for PMOS*/
+  //y軸の設定                                                                   
+  mg->SetMinimum(1e-12);
+  //mg->SetMaximum(2e-4);
+
+  leg->Draw();
+
+  std::cout << "------------------------------ "<<std::endl;
+
+  std::string SEXT=".eps";
+  std::string SName=SOI_CHIP_FET_IV_+TEMP+SEXT;
+  c->SaveAs(SName.c_str());
+
+  //std::string SEXT=".gif";
+  //std::string SName=SOI_CHIP_FET_IV_+TEMP+SEXT;
+  //c->SaveAs(SName.c_str());
+
+}

@@ -1,0 +1,2 @@
+ebb *.jpg
+ebb *.png

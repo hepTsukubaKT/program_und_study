@@ -1,0 +1,13 @@
+# Fdb version 3
+["dvipdf"] 1513236093 "title.dvi" "title.pdf" "title" 1513236095
+  "title.dvi" 1513236092 1220 c31524e36193b1ed72e0fd8f9edc178d "latex"
+  (generated)
+  "title.pdf"
+["latex"] 1513236091 "title.tex" "title.dvi" "title" 1513236095
+  "c:/w32tex/share/texmf-dist/web2c/eptex/platex.fmt" 1512081392 4353650 efb4d62717d17dd15cae045cedc1d87a ""
+  "c:/w32tex/share/texmf-dist/web2c/texmf.cnf" 1508648580 32330 f5778cdb1b2a7b3298d246206f72bbfa ""
+  "title.aux" 1513048331 623 ef202f4deaf1d169342bf48b89728fe2 ""
+  "title.tex" 1513236090 738 9ccf73ab7104115d08430cafe5119e9b ""
+  (generated)
+  "title.log"
+  "title.dvi"

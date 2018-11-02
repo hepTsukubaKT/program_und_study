@@ -1,0 +1,92 @@
+\documentclass[10pt, a4paper, twocolumn]{jarticle}
+\usepackage[dvips,dvipdfm,dvipdfmx]{graphicx}
+\usepackage{float}
+\usepackage{comment}
+%\renewcommand{\baselinestretch}{0.9}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsf}
+
+\setlength{\columnsep}{1zw}
+\setlength{\topmargin}{28mm}
+\addtolength{\topmargin}{-1in}
+\setlength{\oddsidemargin}{20mm}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{20mm}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{252mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\topskip}{0mm}
+
+\pagestyle{empty}
+
+\begin{document}
+  \thispagestyle{empty}
+  
+  \twocolumn[
+    \begin{center}
+      \Large
+      \textbf{2層埋込酸化膜構造をもつSOIピクセル検出器による$\beta$線検出} 
+    \end{center}
+    
+    \large
+    \hspace{11cm} 201210841           遠藤 駿\\
+    \hspace{11cm} 指導教員           　金 信弘  {\small 印}\\
+      
+    \vspace{4mm}
+  ]
+  
+%%%----------------------------------------------------------------------------
+\begin{section}{SOIピクセル検出器}
+ SOI(Silicon On Insulator)技術を用いることでセンサー部分と読み出し部分が一体となるピクセル検出器の開発が2005年よりKEK測定器開発室のプロジェクトの一環として進められている. SOI技術とは、${\rm SiO_2}$の絶縁膜を介してシリコン層を形成する技術であり、各々のトランジスタを酸化膜によって完全に分離することが可能である。この技術を用いて、2つの抵抗値が異なるシリコンウェハーを酸化膜を中間層とすることで貼り合わせ、下部支持基盤層を荷電粒子検出を行うセンサー部分、SOI層を読み出し回路形成部分とする、SOI読み出し回路一体型ピクセル検出器の開発が行われている。
+\begin{figure}[!htbp]
+  \begin{center}
+   \includegraphics[width=70mm]{SOIPIX.png}
+\caption{SOIピクセル検出器}
+  \end{center}
+ \label{fig:SOI構造}
+\end{figure}
+
+ 本検出器は、モノリシック型でSOI-CMOS構造をもつだけでなくシリコン層間のバンプボンディングを廃しているため、小ピクセル化による位置分解能の向上や低物質量化を実現し、また酸化膜によって分離されることで接続部の浮遊容量が小さくなり、S/N比の向上や信号読み出しの高速化、SEE(Single Event Effect)に対する耐性といった特長をもつ。
+
+ しかし、高エネルギー実験におけるSOIピクセル検出器の応用にはバックゲート効果、センサー回路間クロストーク、放射線照射によるTID(Total Ionizing Dose)効果の3つの課題がある。
+これらに対して我々は、酸化膜層中にミドルシリコン層を加え、2層の酸化膜を形成する2層埋込酸化膜構造( double )を導入している。
+
+ 2層埋込酸化膜構造の導入によって、中間シリコン層がシールドとなりバックゲート効果、センサー回路間クロストークの抑制を為すだけでなく、中間シリコン層に対して負の電位を付与することで、TID効果により酸化膜層に蓄積された正孔の電気的ポテンシャルを打ち消すことが可能となる。このように高エネルギー実験での応用が期待される double SOIピクセル検出器を用いて$\beta$線の検出を行った。
+
+
+
+
+
+\end{section}
+\begin{section}{FPIX2}
+ FPIX2は筑波大学本多氏が設計した積分型SOIピクセル検出器である。
+ピクセルサイズは8$\mu$m角で、各ピクセルに図\ref{fig:FPIX2回路}のような回路が集積してある。
+チップサイズは3mm角で、その中に128$\times$128ピクセルが並んでおり有感領域は約1mm角となっている。
+
+ FPIX2は、ピクセル内にキャパシタンスを持ず、あるピクセルの読み出しを行いながら他のピクセルの電荷積分を行うローリングシャッター方式を採用している。
+また、本実験に用いたdouble構造のチップのセンサー部分はp型バルクにn型電極が設置しており、荷電粒子通過の際に生じた電子正孔対の内、電子の移動により誘起された電圧を検出している。
+
+\begin{figure}[H]
+  \begin{center}
+   \includegraphics[width=70mm]{FPIX2.png}
+\caption{FPIX2回路}
+  \end{center}
+ \label{fig:FPIX2回路}
+\end{figure}
+\end{section}
+\begin{section}{$\beta$線の検出}
+$^{90}$Srを$\beta$線源として用い，電荷積分型SOIピクセル検出器の2による$\beta$線の検出を行った．
+タイミングをあわせるため線源，検出器の下にシンチレータを配置し，シンチレータの信号をトリガーとして測定行った．
+
+今後クラスタリングを行うことにより$\beta$線のシグナルについてより詳細に検証を行う．
+
+\end{section}
+
+
+
+\end{document}
