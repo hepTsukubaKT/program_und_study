@@ -1,0 +1,355 @@
+%----------------------------------------------------------------------%
+\chapter{LGADの性能評価}
+\label{chap:LGAD}
+%----------------------------------------------------------------------%
+\section{背景}
+現行のP$^{+}$-in-N型ピクセルセンサーに対して，現在HL-LHC計画に向けて開発が進められているのは，N$^{+}$-in-P型ピクセルセンサーである．第\ref{sub:damage}項で前述したように，バルク損傷はP型不純物として振る舞うために，高放射線環境下ではP$^{+}$-in-N型センサーのN型バルクがP型に型反転し，全空乏化しなければ信号が読み出せなくなる．一方，現在開発が進められているN$^{+}$-in-P型センサーでは，P型バルクなので型反転を起こさず，常に部分空乏化でも信号の読み出しが可能となる．このN$^{+}$-in-P型センサーの内部に増幅機能を持たせた検出器が，本研究で研究開発を行なったLGAD (Low Gain Avalanche Detector)である．信号増幅機能を持つことで，従来型($\sim150~\mu{\rm m}$)よりもさらに薄いセンサー($\sim50~\mu{\rm m}$)で信号読み出しに十分な信号を得ることができる．センサーが薄くなることで，信号の立ち上がりが速くなり，時間分解能は向上する．また，物質量が抑えられるために，センサー内での散乱が少なく，低エネルギー粒子の運動量測定精度が向上する．この特徴はMPPC (Multi-Pixel Photon Counter)も持つが，MPPCはガイガーモードで動作するため，入射粒子数によって信号量は変化しない．一方，LGADではリニアモードで動作するために，入射粒子数をパルスの変化によって検出することができる点で新しい．この増幅機能は，高増幅ではノイズも増幅してしまうため，高エネルギー実験に適したS/N比を実現するためには10倍程度の低増幅が望ましいと言われている．また，LGADは時間分解能が良いため，数十psの時間分解能があれば性能が飛躍的に改善するPET(Positron Emission Tomography)装置など，医療機器への応用に対しても期待されている．\par
+%----------------------------------------------------------------------%
+\subsection{LGADの構造}
+LGADの基本的な構造を図\ref{fig:LGADbase}に示す．従来のN$^{+}$-in-P型センサー同様，P型バルクにN$^{+}$電極をインプラントした検出器であるが，LGAD特有の構造は，N$^{+}$電極直下あるP-well層である．このP-well層は高抵抗のP型バルクよりも不純物濃度が高く，N$^{+}$電極とのPN接合により高電場を形成する．この高電場により，電極まで移動する電子がアバランシェを起こし，信号が増幅される．以降，このP-well層を増幅層と呼ぶ．\par
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=120mm]{./pdf/LGAD.pdf}
+	\caption{LGADの基本構造.}
+	\label{fig:LGADbase}
+\end{figure}
+%----------------------------------------------------------------------%
+\subsection{サンプル}
+本研究で使用したセンサーは浜松ホトニクス社で製造されたもので，大きくピクセル型センサー(図\ref{fig:LGAD}(左))とストリップ型センサー(図\ref{fig:LGAD}(右))に分けられる．増幅層の不純物濃度は4段階あり，Aが最も少なく，B，C，Dの順で多くなっている．空乏化できるバルク部の厚さ(活性層厚，Active Thickness)にも50~$\mu\rm{m}$と80~$\mu\rm{m}$の2種類がある．\par
+\begin{figure}[H]
+\begin{minipage}{0.48\hsize}
+	\raggedleft
+	\includegraphics[width=50mm]{./pdf/LGADpixel.pdf}
+ \end{minipage}
+ \begin{minipage}{0.52\hsize}
+	\includegraphics[width=50mm]{./pdf/LGADstrip.pdf}
+ \end{minipage}
+ 	\caption{ピクセル型センサー(左)とストリップ型センサー(右).}
+	\label{fig:LGAD}
+\end{figure}
+%----------------------------------------------------------------------%
+\subsubsection*{ピクセル型LGAD}
+本研究で使用したピクセル型センサーは，大きさ2.5~mm$\times$2.5~mm，厚さ150~$\mu\rm{m}$であり，1~mm$\phi$の受光面を持つ．本研究で用いたサンプル名を表\ref{tab:sampleP}にまとめた．
+\begin{table}[h]
+	\centering
+	\caption{ピクセル型LGADのサンプル名}
+	\vspace{5truemm}
+	\begin{tabular}{@{\hspace{0.5cm}}c@{\hspace{1cm}}c@{\hspace{1cm}}c@{\hspace{1cm}}c@{\hspace{1cm}}c@{\hspace{0.5cm}}}\hline
+	\textbf{Active Thickness}& \textbf{Dose A}& \textbf{Dose B}& \textbf{Dose C}& \textbf{Dose D}\\
+	\hline\hline
+	50~$\mu\rm{m}$& 50A& 50B& 50C& 50D\\
+	\hline
+	80~$\mu\rm{m}$& 80A& 80B& 80C& 80D\\
+	\hline
+	\end{tabular}
+	\label{tab:sampleP}
+\end{table}
+%----------------------------------------------------------------------%
+\subsubsection*{ストリップ型LGAD}
+本研究で使用したストリップ型センサーは，大きさ6~mm$\times$12~mm, 厚さ150~$\mu\rm{m}$であり，80~$\mu\rm{m}$ピッチで50ストリップある．本研究で用いたサンプル名を表\ref{tab:sampleS}にまとめた．
+\begin{table}[h]
+	\centering
+	\caption{ストリップ型LGADのサンプル名}
+	\vspace{5truemm}
+	\begin{tabular}{@{\hspace{0.5cm}}c@{\hspace{0.7cm}}r@{\hspace{0.7cm}}r@{\hspace{0.7cm}}r@{\hspace{0.7cm}}r@{\hspace{0.7cm}}c@{\hspace{0.5cm}}}\hline
+	\textbf{Active Thickness}& \textbf{Dose A}& \textbf{Dose B}& \textbf{Dose C}& \textbf{Dose D}\\%&  $\ast$\\
+	\hline\hline
+%	50~$\mu\rm{m}$& S50A& S50B& S50C& S50D& $\times$\\
+%	\hline
+%	80~$\mu\rm{m}$& S80A& S80B& S80C& S80D& $\times$\\
+%	\hline
+	50~$\mu\rm{m}$& GB50A& GB50B& GB50C& GB50D\\%& $\circ$\\
+	\hline
+	80~$\mu\rm{m}$& GB80A& GB80B& GB80C& GB80D\\%& $\circ$\\
+	\hline
+%	\multicolumn{6}{r}{$\ast$ Higher-Breakdown-Voltage-Design}
+	\end{tabular}
+	\label{tab:sampleS}
+\end{table}
+%----------------------------------------------------------------------%
+\subsubsection*{P型バルク}
+P型バルク厚は150~$\mu$mであるが，活性層を除いて，P$^{+}$の不活性層を拡散侵入させている．また，Active Thicknessが50~$\mu$mと80~$\mu$mのサンプルでは，活性層の比抵抗が異なる．
+%異なり，それぞれ3$\sim$8~k$\Omega$cmと1~k$\Omega$cmである．
+%----------------------------------------------------------------------%
+\section{IV測定}
+%----------------------------------------------------------------------%
+\subsection{測定方法}
+\label{sub:IVsetup}
+N$^{+}$電極とP$^{+}$電極に逆バイアス電圧を加えたとき，ピクセル型センサーに流れる電流値を測定した(図\ref{fig:IV}(左))．LED光はファンクションジェネレータから1~kHzの矩形パルス(Duty cycle$=50~\%$)を出力することで点灯させ，センサーとの距離($\sim$4~cm)は一定に保たれるよう固定した(図\ref{fig:IV}(中央, 右))．
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=100mm]{./pdf/IVsetup.pdf}
+%	\caption{IV測定のセットアップ.}
+%	\label{fig:IVsetup}
+%\end{figure}
+%\begin{figure}[H]
+%\begin{minipage}{0.48\hsize}
+%	\raggedleft
+%	\includegraphics[width=60mm]{./pdf/IVtate.pdf}
+%\end{minipage}
+%\begin{minipage}{0.52\hsize}
+%	\includegraphics[width=60mm]{./pdf/IVyoko.pdf}
+%\end{minipage}
+%	\caption{IV測定時のセンサーとLED光の位置関係.}
+%	\label{fig:IVlight}
+%\end{figure}
+\begin{figure}[H]
+\begin{minipage}{0.36\hsize}
+	\includegraphics[width=57mm]{./pdf/IVsetup.pdf}
+\end{minipage}
+\begin{minipage}{0.3\hsize}
+	\raggedleft
+	\includegraphics[width=57mm]{./pdf/IVtate.pdf}
+\end{minipage}
+\begin{minipage}{0.3\hsize}
+	\raggedright
+	\includegraphics[width=57mm]{./pdf/IVyoko.pdf}
+\end{minipage}
+	\caption{IV測定のセットアップ(左). センサーとLED光の位置関係(中央, 右).}
+	\label{fig:IV}
+\end{figure}
+%----------------------------------------------------------------------%
+\subsection{ピクセル型センサーの耐電圧}
+\label{sub:weak}
+ピクセル型センサーのIV特性を調べる際，いくつかのセンサーがスパークした．スパークは2種類に分けられる．グランド側のアルミとN$^{+}$電極に繋げたワイヤーボンドが近いために，ワイヤーボンドの下側にあるアルミが焦げてしまったもの(図\ref{fig:spark}(左))と，リング状のP$^{+}$電極とN$^{+}$電極の間が十分広くないためにスパークしたもの(図\ref{fig:spark}(右))である．ワイヤーボンドによるスパークは，アルミとの距離を十分にとって繋ぐことで防止できた．一方，リング上のスパークはピクセル型センサーの設計上の欠陥であるため，高電圧($\textgreater$800~V)をかける際にはスパークを防げなかった．以降の測定結果に欠けているサンプルがあるのは，これらのスパークのためである．
+%\begin{figure}[H]
+%\begin{minipage}{0.5\hsize}
+%	\raggedleft
+%	\includegraphics[width=65mm]{./pdf/spark1.pdf}
+%\end{minipage}
+%\begin{minipage}{0.5\hsize}
+%	\raggedright
+%	\includegraphics[width=65mm]{./pdf/spark2.pdf}
+%\end{minipage}
+%	\caption{ピクセル型センサーのスパーク(アルミの焦げ:左, リング上:右).}
+%	\label{fig:spark}
+%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=60mm]{./pdf/spark1.pdf}
+	\includegraphics[width=60mm]{./pdf/spark2.pdf}
+	\caption{ピクセル型センサーのスパーク(アルミの焦げ:左, リング上:右).}
+	\label{fig:spark}
+\end{figure}
+%----------------------------------------------------------------------%
+\subsection{暗電流との比較}
+\label{sub:leak}
+LED光応答による信号を評価するため，暗電流(LED光を当てていないときの電流値)の測定を行なった．以降の測定では，この暗電流に対して2桁程度電流値が大きくなるように，LED光の強度を調整した．暗電流とLED赤外光($\lambda\sim$850~nm)応答の結果をまとめて図\ref{fig:leak}に示す．いずれも20~℃での測定結果である．\par
+\begin{figure}[H]
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/50.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/80.pdf}
+\end{minipage}
+ 	\caption{暗電流とLED赤外光応答のIV特性比較.}
+	\label{fig:leak}
+\end{figure}
+暗電流は，全てのサンプルについて同程度であるのに対して，LED赤外光応答は暗電流とは異なる電流値の上昇が見え，その上昇の仕方はサンプル毎に異なる．これはLGADの増幅機能による効果だと考えられる．増幅層の不純物濃度は高く，Active Thicknessは薄い(50~$\mu$m)ほど，より低電圧でも増幅が確認できる．また，暗電流はある一定の電圧で急激に上昇する．この変化について，サンプル80Dで詳しく調べるため，暗電流が急上昇する500~V付近では1~V間隔で測定した結果が図\ref{fig:iv}である．500~V付近でLED光応答の電流値に比べて暗電流が急激に上昇していることがわかる．S/N比の変化を評価するため，LED光応答(Current)と暗電流(Leakage)に対して，信号(Signal)とノイズ(Noise)を次のように定義する．
+\[Signal=Current-Leakage，　Noise=\sqrt{Leakage}\]
+%\[Signal/Noise=(Current-Leakage)/\sqrt{Leakage}\]
+これによって求まるSignal/Noiseの絶対値は，S/N比ではないが，S/N比に比例する量である．サンプル80DにおけるSignal/Noiseの値を図\ref{fig:iv}から求めた結果を図\ref{fig:sn}に示す.
+\begin{figure}[H]
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/80Dxxx.pdf}
+	 	\caption{Pixel 80DのIV特性.}
+	\label{fig:iv}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/80Dooo.pdf}
+	 	\caption{Pixel 80Dの電圧に伴うS/Nの変化.}
+	\label{fig:sn}
+\end{minipage}
+\end{figure}
+S/N比は信号の増加に伴い上昇し，$-$498~Vで最大になった後に急激に下降する．つまり，S/N比は暗電流が急激に上昇する直前に最大となることが分かる．各サンプルについてS/N比が下降する前の増幅率を図\ref{fig:leak}から求め，表\ref{tab:sn}にまとめた．ただし，増幅率は$-$100~Vにおける電流値を基準とした．これより，良いS/N比には100倍を超えない低増幅が適していることが確かめられた．また，増幅層の不純物濃度が高く, Active Thicknessが薄いほど，低電圧でS/N比が最適になると言える．\par
+\begin{table}[H]
+	\centering
+	\caption{S/N比が最大となる電圧値と増幅率}
+	\vspace{5truemm}
+	\begin{tabular}{@{\hspace{0.5cm}}c@{\hspace{0.7cm}}c@{\hspace{0.7cm}}r@{\hspace{0.7cm}}}\hline
+	\textbf{Sample Name}& \textbf{Voltage[V]}& \textbf{Gain}\\
+	\hline\hline
+	50C& 470& 31.9\\
+	\hline
+	50D& 340& 27.2\\
+	\hline
+	80A& 680& 9.4\\
+	\hline
+	80B& 680& 14.6\\
+	\hline
+	80C& 620& 13.8\\
+	\hline
+	80D& 490& 29.0\\
+	\hline
+	\end{tabular}
+	\label{tab:sn}
+\end{table}
+%----------------------------------------------------------------------%
+\newpage
+\subsection{温度依存性}
+\label{sub:temp}
+IV特性の温度依存性を見るため，LED緑色光($\lambda\sim$565~nm)応答を$-$20$\sim$60~℃について20~℃間隔で測定した．Active Thickness 80~$\mu$mのサンプルにおける測定結果を図\ref{fig:tdep}に示す(Active Thickness 50~$\mu$mのサンプルについては付録\ref{T}参照)．いずれのサンプルにおいても，温度が低下するほど電流値は大きくなっている．第\ref{sub:iviv}節で前述したように，電流の上昇がツェナー降伏によるものであると，温度が低下するほど電流値は小さくなるはずである．つまりこの結果は，電流の上昇が増幅層におけるアバランシェによるものであることを示している．
+\begin{figure}[H]
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/Tdep80A.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/Tdep80B.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/Tdep80C.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/Tdep80D.pdf}
+\end{minipage}
+ 	\caption{IV特性の温度依存性(Active Thickness 80~$\mu$m)．緑色LEDに対する応答．}
+	\label{fig:tdep}
+\end{figure}
+%----------------------------------------------------------------------%
+\newpage
+\subsection{波長依存性}
+\label{sub:wave}
+LGAD内部の構造を理解するために，IV特性のLED波長依存性を測定した．測定に用いたLEDは青色・緑色・赤色・赤外の4種類である。それぞれの波長とシリコンへの侵入長を表\ref{tab:lambda}にまとめた．ただし侵入長は図\ref{fig:D}から見積もった．Active Thickness 80~$\mu$mのサンプルにおける測定結果は図\ref{fig:WLdep}(左)に示す(Active Thickness 50~$\mu$mのサンプルについては付録\ref{W}参照))．\par
+\begin{table}[H]
+	\centering
+	\caption{測定に用いたLED光の波長とシリコンへの侵入長}
+	\vspace{5truemm}
+	\begin{tabular}{@{\hspace{0.5cm}}c@{\hspace{0.7cm}}c@{\hspace{0.7cm}}c@{\hspace{0.5cm}}}\hline
+	\textbf{LED}& \textbf{Wavelength}& \textbf{Absorption Depth}\\
+	\hline\hline
+	Blue& 464 nm& 0.5 $\mu$m\\
+	\hline
+	Green& 565 nm& 2.0 $\mu$m\\
+	\hline
+	Red& 627 nm& 3.0 $\mu$m\\
+	\hline
+	Infra-red& 850 nm& 20 $\mu$m\\
+	\hline
+	\end{tabular}
+	\label{tab:lambda}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=95mm]{./pdf/silicon.pdf}
+	\caption{シリコンへの侵入長の波長依存性\cite{D}.}
+	\label{fig:D}
+\end{figure}
+測定結果から波長が長いほど増幅が大きいが，降伏電圧は波長に依存しないことが分かった．また，0$\sim$100~Vに急激な電流値の上昇が見えたため，0$\sim$100~Vについて1~V間隔で測定し直したのが図\ref{fig:WLdep}(右)である．これを見ると，この上昇は増幅層の不純物濃度が高いほど高電圧まで続いていることが分かる．さらに増幅層の不純物濃度が大きく，波長が長いほど上昇が大きくなっている．しかし，緑色と赤色の上昇の差に比べて，赤色と赤外での上昇の差が小さいことから，増幅層は赤外の侵入長(20~$\mu$m)より浅く，赤色の侵入長(3.0~$\mu$m)より深いと推測できる．
+\begin{figure}[H]
+\begin{minipage}{0.55\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80Afull.pdf}
+\end{minipage}
+\begin{minipage}{0.45\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80A100.pdf}
+\end{minipage}
+\begin{minipage}{0.55\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80Bfull.pdf}
+\end{minipage}
+\begin{minipage}{0.45\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80B100.pdf}
+\end{minipage}
+\begin{minipage}{0.55\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80Cfull.pdf}
+\end{minipage}
+\begin{minipage}{0.45\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80C100.pdf}
+\end{minipage}
+\begin{minipage}{0.55\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80Dfull.pdf}
+\end{minipage}
+\begin{minipage}{0.45\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/WLdep80D100.pdf}
+\end{minipage}
+ 	\caption{IV特性のLED波長依存性(全体:左, 0$\sim$100 V:右).}
+	\label{fig:WLdep}
+\end{figure}
+%----------------------------------------------------------------------%
+\section{CV測定}
+\label{sub:CV}
+%----------------------------------------------------------------------%
+N$^{+}$電極とP$^{+}$電極に逆バイアス電圧を加えたとき，空乏化により変化するストリップ型センサーの静電容量を測定した(図\ref{fig:CVsetup})． Active Thickness 80~$\mu$mのサンプルにおける測定結果を図\ref{fig:CV}(左)に示す(Active Thickness 50~$\mu$mのサンプルについては付録\ref{CV}参照)．全空乏化が0$\sim$100~Vには終わることが分かったので，0$\sim$100~Vについて1~V間隔で測定し直した結果が図\ref{fig:CV}(右)である．LCRメータのテスト周波数は1500Hzに設定した．\par
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=120mm]{./pdf/CVsetup.pdf}
+ 	\caption{CV測定のセットアップ.}
+	\label{fig:CVsetup}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/60GB80CVfull.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/60GB80CV100.pdf}
+\end{minipage}
+ 	\caption{CV特性の増幅層不純物濃度依存性(全体:左, 0$\sim$100V:右).}
+	\label{fig:CV}
+\end{figure}
+静電容量の変化から空乏化が段階的に起こっていることが分かる．この変化の様子から，空乏化がどの領域から起こるのかについて考察する．まず，Active Thickness 80~$\mu$mのサンプルが全空乏化したときの静電容量[F]を求める．センサーの大きさは6~mm$\times$12~mmであるが，周囲1~mm程度は空乏化できない領域なので，面積S=4~mm$\times$10~mm，厚さd=80~$\mu$mで考えれば良い．\par
+\begin{eqnarray*}
+C&=&\epsilon_{0}\epsilon_{Si}\frac{S}{d}\\
+&=&(8.854\times10^{-12})\times12.0\times\frac{(4\times10^{-3)}\times(10\times10^{-3})}{80\times10^{-6}}~{\rm F}\\
+&\simeq&53~{\rm pF}
+\end{eqnarray*}
+\begin{eqnarray*}
+真空の誘電率\epsilon_{0}=8.854\times10^{-12}~{\rm F/m}，シリコンの比誘電率\epsilon_{Si}=12.0
+\end{eqnarray*}
+同様に，増幅層が空乏化したときの静電容量も求める．ただし厚さは第\ref{sub:wave}節の考察より，6~$\mu$mとして計算する．
+\begin{eqnarray*}
+C&=&(8.854\times10^{-12})\times12.0\times\frac{(4\times10^{-3})\times(10\times10^{-3})}{6\times10^{-6}}~{\rm F}\\
+&\simeq&708~{\rm pF}
+\end{eqnarray*}
+全空乏化後の静電容量は高電圧($\textgreater$60~V)での値に一致している．その後静電容量が低下していないことからも60~V付近で全空乏化していることが分かる．増幅層空乏化後の静電容量の計算値から，増幅層の空乏化は5$\sim$15~V付近で起こっていると考えられるが，図\ref{fig:CV}(右)の形からも，その前後の領域より傾きが小さく，不純物濃度の高い領域の空乏化が起こっていることが分かる．第\ref{sub:cv}節で前述したように，不純物濃度が高い半導体と低い半導体では，低い半導体の方が低電圧でも深くまで空乏化するため，CV特性の傾きは大きくなる．以上をまとめると，0$\sim$5~V付近でN$^{+}$電極の増幅層に接していないバルク部との境界から空乏化が始まり，次いでN$^{+}$電極と増幅層の境界，最後にバルク部全体との空乏化が起きていると考えることができる．
+%----------------------------------------------------------------------%
+%\newpage
+\section{赤外レーザー測定}
+\label{sub:Laser}
+%----------------------------------------------------------------------%
+ストリップ型センサーのNdYaGレーザー($\lambda=$1064 nm)応答をAlibavaを用いて測定した(図\ref{fig:Lasersetup}(左))．レーザー測定では狭い領域(1~$\mu$m程度)に限定して入射することができるため，ストリップ型センサーの増幅層がある領域(図\ref{fig:Lasersetup}(右)実線)とない領域(図\ref{fig:Lasersetup}(右)点線)とで，電荷収集量の電圧依存性に違いがあるかを調べた． 波長$\lambda=$1064~nmではセンサーのバルク部を貫通していると考えて良い(図\ref{fig:D})．結果を図\ref{fig:Laser}に示す．増幅層のある領域では，電圧が高くなるほど電荷収集量も増加しているが，増幅層のない領域では大きく変化していないことが分かる．つまり，IV特性で見えていた電流値の増加は，増幅層での信号の増幅であったことが明確となった．さらに，増加が始まる電圧を正確に知ることができなくても，この増幅層のある領域とない領域で電荷収集量の比をとれば，増幅率を評価することができる．図\ref{fig:Laser}の結果からは，増幅率が電圧によって図\ref{fig:gain}のように変化すると言える．この評価方法を用いて，他のサンプルについても測定を行うことで，さらなるLGADの構造理解へと繋げたい．\par
+\begin{figure}[H]
+\begin{minipage}[b]{0.6\hsize}
+	\centering
+	\includegraphics[width=85mm]{./pdf/Lasersetup.pdf}
+\end{minipage}
+\begin{minipage}[b]{0.3\hsize}
+	\centering
+	\includegraphics[width=40mm]{./pdf/Laser.pdf}
+\end{minipage}
+ 	\caption{レーザー測定のセットアップ(左)とレーザー入射位置(右).}
+	\label{fig:Lasersetup}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/LaserN.pdf}
+\end{minipage}
+\begin{minipage}{0.5\hsize}
+	\centering
+	\includegraphics[width=75mm]{./graph/LaserS.pdf}
+\end{minipage}
+ 	\caption{レーザー測定の結果．増幅層なし(左)と増幅層あり(右).}
+	\label{fig:Laser}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=70mm]{./graph/gain.pdf}
+ 	\caption{増幅率の電圧依存性.}
+	\label{fig:gain}
+\end{figure}
