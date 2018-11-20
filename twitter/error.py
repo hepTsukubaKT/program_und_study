@@ -19,7 +19,7 @@ u_I1=[]
 I0     =G0/(G0+G1)
 I1     =G1/(G0+G1)
 #ファイル系
-data01  = np.loadtxt("./exp476_tmp.dat", comments='#')
+data01  = np.loadtxt("./exp476.dat", comments='#')
 err     = np.loadtxt("./error/476_raw.txt", comments='#')
 pow_mrr = np.loadtxt("./mirror_pow/476_mrr.txt", comments='#')
 

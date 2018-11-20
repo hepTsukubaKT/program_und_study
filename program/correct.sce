@@ -1,13 +1,20 @@
 alpha =[45 60 65 70 75]
-lambda=47.6
-d_lambda=(0.41/57.2)*lambda
+lambda=70.5
+inc_width=12.356
+leng=350
+//defined from grating
 d=50
-inc_width=6.53
-
+N=20
+//col
+d_lambda=lambda/(N*inc_width)
 db=asind((lambda+d_lambda-d*sind(alpha))/d)-asind((lambda-d*sind(alpha))/d)
 
-width=350*tand(db)
+width=leng*tand(db)
 
 beam_width=width*2+inc_width
 
 beam_corr=beam_width/inc_width
+
+disp(d_lambda)
+disp(beam_width)
+disp(beam_corr)
