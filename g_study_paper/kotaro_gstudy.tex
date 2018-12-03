@@ -26,7 +26,7 @@
 
 %=====表のセル結合=====%
 \usepackage{multirow}
-
+\newcommand{\um}{$\mu m$}
 
 
 \begin{document}
@@ -41,16 +41,16 @@
 	\listoftables    %表目次の出力
 	\clearpage
 %=====ページナンバリング=====%
-      \pagenumbering{arabic}
-	%\include{./Chapter/Chapter1/chapter1} %序論
-	%\include{./Chapter/Chapter2/chapter2} %超電導トンネル接合素子光検出器(STJ)
-	%\include{./Chapter/Chapter3/chapter3}  %SOIピクセル検出器
+      +*\pagenumbering{arabic}
+	\include{./Chapter/Chapter1/chapter1} %序論
+	\include{./Chapter/Chapter2/chapter2} %超電導トンネル接合素子光検出器(STJ)
+	%\include{./Chapter/Chapter3/chapter3}  %回折格子
 	%\include{./Chapter/Chapter4/chapter4}  %SOI増幅器を用いたSTJ信号増幅試験
 	%\include{./Chapter/Chapter5/chapter5}  %極低温環境用SOI-FETの回路シミュレーター構築
 	%\include{./Chapter/Chapter6/chapter6}  %結論
 
 	%\include{./Chapter/Appendix/appendix} %極低温環境用SPICE回路シミュレーター構築のためのSOI-FETの電流電圧特性測定結果
-
+	
 	%=====謝辞=====%
 	%\include{./Chapter/Acknowledgement/ack}
 
