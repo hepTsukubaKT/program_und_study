@@ -9,38 +9,3 @@
 \contentsline {subsection}{\numberline {1.2.1}宇宙背景ニュートリノ}{2}
 \contentsline {subsection}{\numberline {1.2.2}ニュートリノ崩壊光のエネルギースペクトル}{2}
 \contentsline {subsection}{\numberline {1.2.3}COBAND実験($\bm {Co}smic\ \bm {Ba}ckground\ \bm {N}eutrino\ \bm {D}ecay\ Search$}{2}
-\contentsline {chapter}{\numberline {第2章}半導体検出器}{4}
-\contentsline {section}{\numberline {2.1}半導体の基礎的性質}{4}
-\contentsline {section}{\numberline {2.2}半導体とは}{4}
-\contentsline {section}{\numberline {2.3}超電導トンネル接合素子光検出器（ＳＴＪ）}{6}
-\contentsline {subsection}{\numberline {2.3.1}ジョセフソン効果}{6}
-\contentsline {subsubsection}{直流ジョセフソン電流}{6}
-\contentsline {subsubsection}{交流ジョセフソン電流}{7}
-\contentsline {subsection}{\numberline {2.3.2}STJ検出器の構造}{8}
-\contentsline {subsection}{\numberline {2.3.3}STJ検出器の動作原理}{8}
-\contentsline {subsection}{\numberline {2.3.4}STJ検出器のエネルギー分解能}{8}
-\contentsline {subsection}{\numberline {2.3.5}STJのリーク電流}{9}
-\contentsline {subsubsection}{不完全な構造的な欠陥}{9}
-\contentsline {subsubsection}{熱励起によって生じる準粒子}{9}
-\contentsline {subsubsection}{その他}{10}
-\contentsline {subsection}{\numberline {2.3.6}STJ検出器の電流電圧特性}{10}
-\contentsline {section}{\numberline {2.4}Nb/Al-STJ検出器}{11}
-\contentsline {subsection}{\numberline {2.4.1}Nb/Al-STJ検出器の構造}{11}
-\contentsline {subsection}{\numberline {2.4.2}Nb/Al-STJ検出器の研究開発の現状}{13}
-\contentsline {chapter}{\numberline {第3章}超伝導トンネル接合素子光検出器(STJ)}{15}
-\contentsline {section}{\numberline {3.1}超伝導の基礎}{15}
-\contentsline {section}{\numberline {3.2}超電導トンネル接合素子光検出器（ＳＴＪ）}{17}
-\contentsline {subsection}{\numberline {3.2.1}ジョセフソン効果}{17}
-\contentsline {subsubsection}{直流ジョセフソン電流}{17}
-\contentsline {subsubsection}{交流ジョセフソン電流}{18}
-\contentsline {subsection}{\numberline {3.2.2}STJ検出器の構造}{19}
-\contentsline {subsection}{\numberline {3.2.3}STJ検出器の動作原理}{19}
-\contentsline {subsection}{\numberline {3.2.4}STJ検出器のエネルギー分解能}{20}
-\contentsline {subsection}{\numberline {3.2.5}STJのリーク電流}{21}
-\contentsline {subsubsection}{不完全な構造的な欠陥}{21}
-\contentsline {subsubsection}{熱励起によって生じる準粒子}{21}
-\contentsline {subsubsection}{その他}{21}
-\contentsline {subsection}{\numberline {3.2.6}STJ検出器の電流電圧特性}{21}
-\contentsline {section}{\numberline {3.3}Nb/Al-STJ検出器}{22}
-\contentsline {subsection}{\numberline {3.3.1}Nb/Al-STJ検出器の構造}{23}
-\contentsline {subsection}{\numberline {3.3.2}Nb/Al-STJ検出器の研究開発の現状}{25}
