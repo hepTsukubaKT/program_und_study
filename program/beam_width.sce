@@ -18,7 +18,7 @@ leng=350//[mm]
 //variable  //
 //////////////
 //入射波長
-lambda=47.6//[um]
+lambda=42.6//[um]
 inc_width=10.344//[mm]
 //入射角
 alpha=[45 60 65 70 75]
